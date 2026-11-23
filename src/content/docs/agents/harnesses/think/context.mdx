@@ -123,9 +123,10 @@ Think's [skills](/agents/harnesses/think/skills/) use a context block. The skill
 
 If you used Think's context before `@cloudflare/think` vNEXT:
 
-- `freezeSystemPrompt()`, `refreshSystemPrompt()`, and `reminder()` moved from `ContextBlocks` to `Context`. `this.context` is a `Context`, and the methods keep their names and signatures.
-- The prompt store moved too. Think no longer writes the frozen prompt to a `_system_prompt` block. The session records it. On the first turn after the upgrade, Think records the prompt it had frozen, so the provider's cache still applies.
+- In a Think agent, your code does not change. `this.context` keeps its method names, and `configureContext()`, the `withContext()` chain, and `withCachedPrompt()` work as before.
+- The system prompt is recorded on the session instead of in a separate stored prompt. On the first turn after the upgrade, Think sends the prompt it had frozen before, so the provider's cache still applies.
 - A reminder no longer moves. It used to ride on the newest user message of every request until a refresh, which changed the previous user message in each request. It is now sent once and stays on the turn that noticed the change.
+- If you use `agents/context` directly, `freezeSystemPrompt()`, `refreshSystemPrompt()`, and `reminder()` moved from `ContextBlocks` to `Context`, which Think's `this.context` now is. `ContextBlocks` takes `(configs, { defaultProvider })` without a prompt store, and `renderSystemPrompt()` renders the blocks as they stand without storing anything.
 
 ## Related
 
