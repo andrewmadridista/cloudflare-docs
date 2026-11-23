@@ -13,7 +13,7 @@ import { TypeScriptExample } from "~/components";
 Context is how a Think agent builds up what the model is told besides the conversation: who the agent is, what it has learned about the user, what it can look up. You declare labelled blocks, and Think renders them into the system prompt, saves what the model writes to them, and records on the [session](/agents/concepts/sessions/) what each turn was sent, so the provider's prompt cache holds.
 
 :::caution[Experimental]
-Context is experimental, and only Think uses it. Its API may change between releases. This page describes `@cloudflare/think` vNEXT.
+Context is experimental, and only Think uses it. Its API may change between releases. This page describes `@cloudflare/think` v0.25.0.
 :::
 
 Most agents need [skills](/agents/harnesses/think/skills/) more than context. Use skills for instructions and references that only some tasks need: the model loads them on demand, and they follow an open format other agents read too. Use context for the few things the model should see on every turn, and for memory the agent writes itself.
@@ -121,7 +121,7 @@ Think's [skills](/agents/harnesses/think/skills/) use a context block. The skill
 
 ## What changed
 
-If you used Think's context before `@cloudflare/think` vNEXT:
+If you used Think's context before `@cloudflare/think` v0.25.0:
 
 - In a Think agent, your code does not change. `this.context` keeps its method names, and `configureContext()`, the `withContext()` chain, and `withCachedPrompt()` work as before.
 - The system prompt is recorded on the session instead of in a separate stored prompt. On the first turn after the upgrade, Think sends the prompt it had frozen before, so the provider's cache still applies.
