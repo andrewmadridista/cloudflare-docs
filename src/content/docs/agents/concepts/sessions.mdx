@@ -14,7 +14,7 @@ A session is an agent's transcript: every message the user sent, every reply, an
 
 The agent keeps its sessions in its own storage, in the Durable Object's SQLite database, so a conversation survives hibernation, eviction, and deploys. When the agent wakes up, the transcript is already there.
 
-A session records what happened. What the model is told besides the conversation, such as its instructions and what it remembers about the user, goes in the system prompt, and each harness builds that in its own way. Think has [context blocks](/agents/harnesses/think/configuration/) for it.
+A session records what happened. What the model is told besides the conversation, such as its instructions and what it remembers about the user, goes in the system prompt, and each harness builds that in its own way. Think builds it from [context blocks](/agents/harnesses/think/context/).
 
 ## Sessions follow the model SDK
 
